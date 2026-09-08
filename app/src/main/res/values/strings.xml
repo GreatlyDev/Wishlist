@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Wishlist</string>
+    <string name="wishlist_title">My Wishlist</string>
+    <string name="wishlist_subtitle">Save the things you want to buy</string>
+    <string name="item_name_hint">Item name</string>
+    <string name="item_price_hint">Price</string>
+    <string name="item_url_hint">URL</string>
+    <string name="add_item">Add Item</string>
+    <string name="list_heading">Saved items</string>
 </resources>

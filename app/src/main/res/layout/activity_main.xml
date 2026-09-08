@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/wishlist_background"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wishlist_title"
+        android:textColor="@color/wishlist_text"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/wishlist_subtitle"
+        android:textColor="@color/wishlist_muted_text"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/itemNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/wishlist_primary"
+        android:hint="@string/item_name_hint"
+        android:imeOptions="actionNext"
+        android:inputType="textCapSentences"
+        android:textColor="@color/wishlist_text"
+        android:textColorHint="@color/wishlist_muted_text" />
+
+    <EditText
+        android:id="@+id/itemPriceInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/wishlist_primary"
+        android:hint="@string/item_price_hint"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:textColor="@color/wishlist_text"
+        android:textColorHint="@color/wishlist_muted_text" />
+
+    <EditText
+        android:id="@+id/itemUrlInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/wishlist_primary"
+        android:hint="@string/item_url_hint"
+        android:imeOptions="actionDone"
+        android:inputType="textUri"
+        android:textColor="@color/wishlist_text"
+        android:textColorHint="@color/wishlist_muted_text" />
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/wishlist_primary"
+        android:text="@string/add_item"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/list_heading"
+        android:textColor="@color/wishlist_text"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wishlistRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
+
+</LinearLayout>
