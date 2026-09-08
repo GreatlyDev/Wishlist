@@ -1,47 +1,54 @@
 package com.example.wishlist
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.wishlist.ui.theme.WishlistTheme
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : ComponentActivity() {
+    private val wishlistItems = mutableListOf<WishlistItem>()
+    private lateinit var wishlistAdapter: WishlistAdapter
+    private lateinit var nameInput: EditText
+    private lateinit var priceInput: EditText
+    private lateinit var urlInput: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            WishlistTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        nameInput = findViewById(R.id.itemNameInput)
+        priceInput = findViewById(R.id.itemPriceInput)
+        urlInput = findViewById(R.id.itemUrlInput)
+
+        wishlistAdapter = WishlistAdapter(wishlistItems)
+        findViewById<RecyclerView>(R.id.wishlistRecyclerView).apply {
+            adapter = wishlistAdapter
+            layoutManager = LinearLayoutManager(this@MainActivity)
+        }
+
+        findViewById<Button>(R.id.addItemButton).setOnClickListener {
+            addWishlistItem()
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    private fun addWishlistItem() {
+        val name = nameInput.text.toString().trim()
+        val price = priceInput.text.toString().trim()
+        val url = urlInput.text.toString().trim()
+        val validation = WishlistItemValidator.validate(name, price, url)
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    WishlistTheme {
-        Greeting("Android")
+        nameInput.error = validation.nameError
+        priceInput.error = validation.priceError
+        urlInput.error = validation.urlError
+        if (!validation.isValid) return
+
+        wishlistItems += WishlistItem(name, price, url)
+        wishlistAdapter.notifyItemInserted(wishlistItems.lastIndex)
+        findViewById<RecyclerView>(R.id.wishlistRecyclerView).scrollToPosition(wishlistItems.lastIndex)
+        nameInput.text.clear()
+        priceInput.text.clear()
+        urlInput.text.clear()
     }
 }
