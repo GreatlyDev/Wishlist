@@ -7,4 +7,10 @@
     <string name="item_url_hint">URL</string>
     <string name="add_item">Add Item</string>
     <string name="list_heading">Saved items</string>
+    <string name="wishlist_item_content_description">Wishlist item: %1$s</string>
+    <string name="remove_item_title">Remove item?</string>
+    <string name="remove_item_message">Remove %1$s from your wishlist?</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_browser_available">No app is available to open this URL.</string>
 </resources>
